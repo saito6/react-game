@@ -9,9 +9,11 @@ import {answerf} from '../function/answer';
 
 const Info = () => {
 
-  const {state,setState} = useContext(AppContext);
+  const {state,setState,setOpen} = useContext(AppContext);
 
-  const handleClickanswer = () => {
+  const handleClickAnswer = () => {
+    setOpen(true);
+    setTimeout(setOpen,1000,false);
     var cardSet = cardSetf();
     if(state.answer[0]+state.answer[1] === state.userChoice[0]+state.userChoice[1] && state.answer[0]*state.answer[1] === state.userChoice[0]*state.userChoice[1]){//正解したとき
       setState({
@@ -30,7 +32,6 @@ const Info = () => {
       });
     }
   }
-
   return(
     <div className="game-info">
       <div className="answer">
@@ -40,7 +41,7 @@ const Info = () => {
       </div>
 
       <div className="submit-area">
-        <button disabled={state.userChoice[0] === null || state.userChoice[1] === null} onClick={handleClickanswer}>決定</button>
+        <button className={state.userChoice[0] === null || state.userChoice[1] === null ? 'disabled' : 'active' } disabled={state.userChoice[0] === null || state.userChoice[1] === null} onClick={handleClickAnswer}>決定</button>
       </div>
       <div className="floor-area">
         <p>{state.floor}階層</p>

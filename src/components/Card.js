@@ -2,6 +2,8 @@ import React,{useContext} from 'react';
 
 import AppContext from '../contexts/AppContext';
 
+import {combine} from '../function/combine';
+
 // ========================================
 
 
@@ -9,45 +11,38 @@ const Card = ({imgNum,num}) => {
 
   const {state,setState} = useContext(AppContext);
 
-  // var cards02 = ['01a','01b','02a','02b','03a','03b'];
-  var cards = ['05a','05b','06a','06b','07a','07b'];
-
-  const length = cards.length;
-
- var com = [30];
- for(var r=0;r<30;r++){
-   com[r] = [2];//配列に配列を入れて2次元配列を作成
- }
- r=0;
- for(var s=0;s<length;s++){//rは0~14で動く
-   for(var t=s+1;t<length;t++){
-       com[r][0] = cards[s];
-       com[r][1] = cards[t];
-       r++;
-   }
- }
- for(r=0;r<15;r++){//反転
-   com[r+15][0] = com[r][1]
-   com[r+15][1] = com[r][0]
- }
- // console.log(com[10][1]);
-
-   var imgurl01 = '/img/animal'+com[imgNum][0]+'.png';
-   var imgurl02 = '/img/animal'+com[imgNum][1]+'.png';
+  var imgurl01 = combine(imgNum,0);
+  var imgurl02 = combine(imgNum,1);
 
 const handleClickUserChoice = () => {
-  if(state.userChoice[0] !== num){
-    var a = state.userChoice[0];
+  let first = state.userChoice[0];
+  let second = state.userChoice[1];
+
+  if(first == num){
     setState({
       cardSet:state.cardSet,
       answer:state.answer,
-      userChoice:[num,a],
+      userChoice:[second,null],
       floor:state.floor
     });
-
-    console.log(state.userChoice[0]);
-    console.log(state.userChoice[1]);
-    // console.log(state.userChoice[0] === 11 || state.userChoice[1] === 11);
+  }
+  else {//被らないように
+    setState({
+      cardSet:state.cardSet,
+      answer:state.answer,
+      userChoice:[num,first],
+      floor:state.floor
+    });
+    // console.log(first);
+    // console.log(second);
+  }
+  if(second == num){
+    setState({
+      cardSet:state.cardSet,
+      answer:state.answer,
+      userChoice:[first,null],
+      floor:state.floor
+    });
   }
 }
 
