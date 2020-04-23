@@ -13,19 +13,19 @@ const Info = () => {
 
   const handleClickanswer = () => {
     var cardSet = cardSetf();
-    if(state.answer[0]+state.answer[1] === state.userChoice[0]+state.userChoice[1] && state.answer[0]*state.answer[1] === state.userChoice[0]*state.userChoice[1]){
+    if(state.answer[0]+state.answer[1] === state.userChoice[0]+state.userChoice[1] && state.answer[0]*state.answer[1] === state.userChoice[0]*state.userChoice[1]){//正解したとき
       setState({
         cardSet:cardSet,
         answer:answerf(cardSet),
-        userChoice:[11,11],
+        userChoice:[null,null],
         floor:state.floor+1 // TODO: もっと単純化
       });
     }
-    else{
+    else{//不正解のとき
       setState({// TODO: もっと簡単にstateをリセットしたい
         cardSet:cardSet,
         answer:answerf(cardSet),
-        userChoice:[11,11],
+        userChoice:[null,null],
         floor:1
       });
     }
@@ -40,7 +40,7 @@ const Info = () => {
       </div>
 
       <div className="submit-area">
-        <button disabled={state.userChoice[0] === 11 || state.userChoice[1] === 11} onClick={handleClickanswer}>決定</button>
+        <button disabled={state.userChoice[0] === null || state.userChoice[1] === null} onClick={handleClickanswer}>決定</button>
       </div>
       <div className="floor-area">
         <p>{state.floor}階層</p>

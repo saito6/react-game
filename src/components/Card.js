@@ -32,11 +32,10 @@ const Card = ({imgNum,num}) => {
  }
  // console.log(com[10][1]);
 
- let imgset = imgNum;
-   var imgurl01 = '/img/animal'+com[imgset][0]+'.png';
-   var imgurl02 = '/img/animal'+com[imgset][1]+'.png';
+   var imgurl01 = '/img/animal'+com[imgNum][0]+'.png';
+   var imgurl02 = '/img/animal'+com[imgNum][1]+'.png';
 
-const handleClickuserChoice = () => {
+const handleClickUserChoice = () => {
   if(state.userChoice[0] !== num){
     var a = state.userChoice[0];
     setState({
@@ -46,14 +45,14 @@ const handleClickuserChoice = () => {
       floor:state.floor
     });
 
-    // console.log(state.userChoice[0]);
-    // console.log(state.userChoice[1]);
+    console.log(state.userChoice[0]);
+    console.log(state.userChoice[1]);
     // console.log(state.userChoice[0] === 11 || state.userChoice[1] === 11);
   }
 }
 
   return(
-    <div className={'card' + (state.userChoice[0] === num || state.userChoice[1] === num ? ' active' : '')} onClick={handleClickuserChoice}>
+    <div className={'card' + (state.userChoice[0] === num || state.userChoice[1] === num ? ' active' : '')} onClick={handleClickUserChoice}>
       <div className="card-num">{num+1}</div>
       <div className="animal-set">
         <p className="animal">

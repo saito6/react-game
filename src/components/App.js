@@ -18,14 +18,14 @@ const App = () => {
   const initialState = {
     cardSet:cardSet,//cardの並び
     answer:answerf(cardSet),//答えの組合せ
-    userChoice:[11,11],//userの選択
+    userChoice:[null,null],//userの選択
     floor:1
   }
 const [state,setState] = useState(initialState);
 
-  console.log(state.userChoice);
-  console.log(state.cardSet);
-  console.log(state.answer);
+  // console.log(state.userChoice);
+  // console.log(state.cardSet);
+  // console.log(state.answer);
 
   return(
     <AppContext.Provider value={{state,setState}}>
