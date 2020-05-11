@@ -40,11 +40,11 @@ header .inner{
 }
 h1{
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
   padding: 20px 0;
 }
 .game{
-  padding: 30px 0 0;
+  padding: 30px 0;
 
 }
 .game-board{
@@ -71,7 +71,7 @@ h1{
   background: #fa0;
 }
 .card-num{
-  padding: 5px 0 5px 10px;
+  padding: 5px 10px;
   font-style: italic;
   color: #1f90ff;
   font-size: 20px;
@@ -87,38 +87,29 @@ h1{
   pointer-events: none;
 }
 .game-info{
-  padding: 30px 0 10px;
+  padding: 30px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
 }
-.answer{
-  width: 250px;
-  display: inline-block;
-  padding: 40px 20px;
-  background: #f0f;
+.timer-area{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: #faf;
+  font-size: 20px;
+  width: 80px;
+  padding: 0.5em 0;
   text-align: center;
+  font-style: italic;
+  font-family: "Oswald";
 }
-.answer_head{
-  font-size: 18px;
-  color: #fff;
-  font-weight: bold;
-}
-.answer p:nth-child(2){
-  padding-top: 10px;
-}
-.ans_num{
-  padding: 0 10px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #f0f;
-  transition: 1s;
-}
-.answer:hover .ans_num{
-  color: #333;
-}
-
 .submit-area{
-  align-self: center;
+  /* position: absolute;
+  top: 0;
+  left: 50%; */
+  /* transform: translateX(-50%); */
 }
 .submit-area button {
   cursor: pointer;
@@ -126,9 +117,9 @@ h1{
   font-size: 20px;
   padding: 0.5em 3em;
   text-decoration: none;
-  background: #f7f7f7;
-  border-left: solid 6px #ff7c5c;
-  color: #ff7c5c;
+  background: #fff;
+  border-left: solid 6px #f0f;
+  color: #f0f;
   font-weight: bold;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
 }
@@ -144,11 +135,15 @@ h1{
   opacity: .5;
 }
 .floor-area{
-  align-self: stretch;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  /* align-self: stretch; */
   background: #aaf;
   display: flex;
   align-items: center;
-  padding: 0 60px;
+  padding: 0.5em 3em;
 }
 .floor-area p{
   color: #fff;
@@ -193,4 +188,154 @@ h1{
     transform: translate(-50%,-90%);
     opacity: 0;
   }
+}
+
+.start-modal{
+  width: 90vw;
+  max-width: 600px;
+  padding: 20px 50px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #333;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  border: 1px solid #eee;
+  z-index: 10;
+}
+.start-modal.none{
+  animation: start 1s ease forwards;
+}
+
+@keyframes start {
+  0%{
+    top: 50%;
+    left: 50%;
+  }
+  100%{
+    top: -80%;
+    left: 100%;
+    transform: rotate(180deg);
+    display: none;
+  }
+}
+
+
+.start-modal .title{
+  font-weight: bold;
+  font-size: 24px;
+}
+.start-modal .content{
+  text-align: left;
+  padding: 15px 0;
+}
+.start-modal .content .twitter-link{
+  text-decoration: underline;
+}
+.start-modal .content .head{
+  margin: 7px 0;
+  padding-left: 5px;
+  font-weight: bold;
+  border-left: 5px solid #f0f;
+}
+.start-modal .content ol{
+  counter-reset: number;
+}
+.start-modal .content ol li{
+  padding: 2px 0 2px 20px;
+  text-indent: -20px;
+}
+.start-modal .content ol li::before{
+  counter-increment: number;
+  content: counter(number);
+  font-weight: bold;
+  color: #1f90ff;
+  font-family: "Oswald";
+  font-style: italic;
+  text-decoration: underline;
+  padding-right: 7px;
+}
+.start-modal .button{
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+  color: #f0f;
+  border: 1px solid #f0f;
+  padding: 0.7em 3em;
+  transition: .5s;
+}
+.start-modal .button:hover{
+  background-color: #f0f;
+  color: #fff;
+}
+
+@media (max-width:1024px) {
+
+}
+@media (max-width:896px) {
+  h1{
+    padding: 10px 0;
+    font-size: 16px;
+  }
+  .game{
+    padding: 5px 0 20px;
+  }
+  .card{
+    width: 49%;
+    height: 95px;
+    margin: 3px auto;
+  }
+  .card-num{
+    padding: 1px 6px 0 6px;
+    font-size: 12px;
+  }
+  .animal{
+    width: 60px;
+  }
+  .game-info{
+    padding: 15px 0;
+  }
+  .timer-area{
+    font-size: 14px;
+    position: fixed;
+    top: 5%;
+    left: 87%;
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+  .submit-area button{
+    font-size: 14px;
+  }
+  .floor-area{
+    padding: 0.5em 10px;
+  }
+  .floor-area p{
+    font-size: 14px;
+  }
+  .start-modal{
+    padding: 10px 20px;
+  }
+  .start-modal .title{
+    font-size: 16px;
+  }
+  .start-modal .content p{
+    font-size: 13px;
+  }
+  .start-modal .content .head{
+    font-size: 14px;
+    border-left-width: 4px;
+  }
+  .start-modal .content ol li{
+    font-size: 12px;
+  }
+  .start-modal .button{
+    font-size: 14px;
+  }
+}
+@media (max-width:498px) {
+
 }

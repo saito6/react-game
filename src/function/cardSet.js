@@ -1,7 +1,7 @@
  export const cardSetf = () => {
    //30個の数から1つのみ重複するという条件で10個の配列を取り出す関数
   var arr30 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29];// TODO: もっと簡潔に
-  console.log(arr30);
+  // console.log(arr30);
 
   //シャッフルアルゴリズム
   var a = arr30.length;
@@ -11,7 +11,7 @@
     arr30[a] = arr30[j];
     arr30[j] = t;
   }
-  console.log(arr30);
+  // console.log(arr30);
 
   //先頭9個の数をcardcopyに入れる
     var cardcopy = [9];
@@ -31,6 +31,6 @@
     cardcopy[j] = t;
   }
 
-  console.log(cardcopy);
+  // console.log(cardcopy);
   return cardcopy;
 }
