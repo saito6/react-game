@@ -11,13 +11,12 @@ import {timerArray} from './App';
 
 const Info = () => {
 
-  const {state,setState,setOpen,setTimer,timer} = useContext(AppContext);
+  const {state,setState,setOpen,setTimer,setStart,setResult} = useContext(AppContext);
 
   const handleClickAnswer = () => {
     setOpen(true);
     clearInterval(timerArray.shift());
     setTimer(20);
-    // console.log(timer);
     setTimeout(setOpen,1000,false);
     var cardSet = cardSetf();
     if(state.answer[0]+state.answer[1] === state.userChoice[0]+state.userChoice[1] && state.answer[0]*state.answer[1] === state.userChoice[0]*state.userChoice[1]){//正解したとき
@@ -29,6 +28,8 @@ const Info = () => {
       });
     }
     else{//不正解のとき
+      setStart(2);
+      setResult(state.floor);
       setState({
         cardSet:cardSet,
         answer:answerf(cardSet),

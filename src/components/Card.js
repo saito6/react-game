@@ -9,40 +9,42 @@ import {combine} from '../function/combine';
 
 const Card = ({imgNum,num}) => {
 
-  const {state,setState} = useContext(AppContext);
+  const {state,setState,start} = useContext(AppContext);
 
   var imgurl01 = combine(imgNum,0);
   var imgurl02 = combine(imgNum,1);
 
 const handleClickUserChoice = () => {
-  let first = state.userChoice[0];
-  let second = state.userChoice[1];
+  if(start === 1){
+    let first = state.userChoice[0];
+    let second = state.userChoice[1];
 
-  if(first == num){
-    setState({
-      cardSet:state.cardSet,
-      answer:state.answer,
-      userChoice:[second,null],
-      floor:state.floor
-    });
-  }
-  else {//被らないように
-    setState({
-      cardSet:state.cardSet,
-      answer:state.answer,
-      userChoice:[num,first],
-      floor:state.floor
-    });
-    // console.log(first);
-    // console.log(second);
-  }
-  if(second == num){
-    setState({
-      cardSet:state.cardSet,
-      answer:state.answer,
-      userChoice:[first,null],
-      floor:state.floor
-    });
+    if(first === num){
+      setState({
+        cardSet:state.cardSet,
+        answer:state.answer,
+        userChoice:[second,null],
+        floor:state.floor
+      });
+    }
+    else {//被らないように
+      setState({
+        cardSet:state.cardSet,
+        answer:state.answer,
+        userChoice:[num,first],
+        floor:state.floor
+      });
+      // console.log(first);
+      // console.log(second);
+    }
+    if(second === num){
+      setState({
+        cardSet:state.cardSet,
+        answer:state.answer,
+        userChoice:[first,null],
+        floor:state.floor
+      });
+    }
   }
 }
 

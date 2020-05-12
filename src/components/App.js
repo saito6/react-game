@@ -31,7 +31,7 @@ const [judge,setJudge] = useState(false);//正解か不正解状態
 const [open,setOpen] = useState(false);//表示、非表示
 const [timer,setTimer] = useState(20);
 const [start,setStart] = useState(0);//0の時start-modal表示、1の時ゲーム中、2の時result画面表示
-const [result,setResult] = useState(1);
+const [result,setResult] = useState(0);
 
 let count;
 const timerf = () => {
@@ -47,10 +47,8 @@ const timerf = () => {
       if(count === 0) {
         resolve();
         console.log('配列数:'+timerArray.length);
-        const reset = setTimeout(() => {//1秒後に時間切れでリセット
-          if(state.floor >= 2){
-            setStart(2);
-          }
+        setTimeout(() => {//1秒後に時間切れでリセット
+          setStart(2);
           setTimer(20);
           setResult(state.floor);
           console.log('timer:'+timer);
@@ -74,7 +72,7 @@ const timerf = () => {
 }
   useEffect(//floorを参照して変更があったときに正解不正解を識別
     () => {
-      if(state.floor == 1){
+      if(state.floor === 1){
         setJudge(false);
       }
       else{

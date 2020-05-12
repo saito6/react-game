@@ -161,6 +161,7 @@ h1{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  z-index: 11;
 }
 .popup.active{
   display: block!important;
@@ -206,6 +207,9 @@ h1{
 }
 .start-modal.none{
   animation: start 1s ease forwards;
+}
+.start-modal.hidden{
+  display: none;
 }
 
 @keyframes start {
@@ -262,7 +266,9 @@ h1{
   cursor: pointer;
   color: #f0f;
   border: 1px solid #f0f;
-  padding: 0.7em 3em;
+  padding: 0.7em 0;
+  width: 150px;
+  margin: 0 10px;
   transition: .5s;
 }
 .start-modal .button:hover{
@@ -271,7 +277,12 @@ h1{
 }
 
 @media (max-width:1024px) {
-
+  .card{
+    height: 140px;
+  }
+  .animal{
+    width: 75px;
+  }
 }
 @media (max-width:896px) {
   h1{
@@ -282,7 +293,7 @@ h1{
     padding: 5px 0 20px;
   }
   .card{
-    width: 49%;
+    width: 23%;
     height: 95px;
     margin: 3px auto;
   }
@@ -291,21 +302,13 @@ h1{
     font-size: 12px;
   }
   .animal{
-    width: 60px;
+    width: 65px;
   }
   .game-info{
     padding: 15px 0;
   }
   .timer-area{
     font-size: 14px;
-    position: fixed;
-    top: 5%;
-    left: 87%;
-    width: 40px;
-    height: 40px;
-    padding-top: 10px;
-    border-radius: 50%;
-    box-sizing: border-box;
   }
   .submit-area button{
     font-size: 14px;
@@ -318,6 +321,7 @@ h1{
   }
   .start-modal{
     padding: 10px 20px;
+    max-width: 500px;
   }
   .start-modal .title{
     font-size: 16px;
@@ -335,7 +339,22 @@ h1{
   .start-modal .button{
     font-size: 14px;
   }
+  .start-modal .button.rule{
+    margin: 0 10px 8px 10px;
+  }
 }
 @media (max-width:498px) {
-
+  .card{
+    width: 49%;
+  }
+  .timer-area{
+    position: fixed;
+    top: 5%;
+    left: 87%;
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
 }
