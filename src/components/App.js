@@ -47,7 +47,6 @@ const timerf = () => {
       if(count === 0) {
         resolve();
         console.log('配列数:'+timerArray.length);
-        setTimeout(() => {//1秒後に時間切れでリセット
           setStart(2);
           setTimer(20);
           setResult(state.floor);
@@ -60,7 +59,6 @@ const timerf = () => {
           });
           setOpen(true);
           setTimeout(setOpen,1000,false);
-        }, 1000);
       }
     }, 1000));
   });
